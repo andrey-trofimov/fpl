@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #000;
+  color: lightgray;
+  padding: 10px;
+  line-height: 1.5rem;
+}
+
+input,
+select,
+option,
+textarea {
+  font-size: 1rem;
+  background-color: rgb(70, 70, 70);
+  color: lightgreen;
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: lightskyblue;
+}
+
+form {
+  border-radius: 10px;
+  background-color: gray;
+  padding: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-align: center;
+  display: block;
+}

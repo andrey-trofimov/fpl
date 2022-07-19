@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=Edge" />
+    <title>FPL</title>
+    <link href="./src/index.css" rel="stylesheet" type="text/css" />
+    <script src="./src/index.js" defer></script>
+  </head>
+
+  <body>
+    <form id="fpl">
+      <input type="date" placeholder="220517" id="dof" />
+      <input type="text" placeholder="RA01786" id="aircraft-id" />
+      <select id="flight-rules" name="flight-rules">
+        <option value="V">V</option>
+        <option value="I">I</option>
+        <option value="Y">Y</option>
+        <option value="Z">Z</option>
+      </select>
+      <select id="type-of-flight" name="type-of-flight">
+        <option value="G">G</option>
+        <option value="S">S</option>
+        <option value="N">N</option>
+        <option value="M">M</option>
+        <option value="X">X</option>
+      </select>
+      <input type="number" id="number" />
+      <input type="text" placeholder="SIRA" id="type-of-aircraft" />
+      <select id="wakw-turbulence-cat" name="wakw-turbulence-cat">
+        <option value="L">L</option>
+        <option value="H">H</option>
+        <option value="M">M</option>
+      </select>
+      <input type="text" placeholder="SG/C" id="equipment" />
+      <input type="text" placeholder="USII" id="departure-aerodrome" />
+      <input type="time" placeholder="1000" id="time" />
+      <input type="text" placeholder="N0095" id="cruising-speed" />
+      <input type="text" placeholder="A0030" id="level" />
+      <textarea
+        rows="5"
+        placeholder="5640N05305E 5627N05214E 5647N05155E 5707N05137E 5719N05208E 5742N05230E 5808N05241E 5759N05300E 5754N05343E 5732N05305E 5711N05309E 5703N05404E 5630N05348E"
+        id="route"
+      ></textarea>
+      <input type="text" placeholder="USII" id="destination-aerodrome" />
+      <input type="time" placeholder="0600" id="total-eet" />
+      <input type="text" placeholder="UWKE" id="altn-aerodrome" />
+      <input type="text" placeholder="" id="second-altn-aerodrome" />
+      <input
+        type="text"
+        placeholder="-DOF/220527 OPR/CAPITAL JET EET/USSV0001
+      RMK/TELXXXXXXXXXX"
+        id="other-information"
+      />
+      <input type="text" placeholder="" id="" />
+
+      <select id="atc-untits"></select>
+      <div id="phone"></div>
+      <div id="email"></div>
+
+      <div id="final-fpl">
+        (FPL-RA01786-VG -SIRA/L-SG/C -USII0900 -N0100A025 5640N05305E 5627N05214E 5647N05155E
+        5707N05137E 5719N05208E 5742N05230E 5808N05241E 5759N05300E 5754N05343E 5732N05305E
+        5711N05309E 5703N05404E 5630N05348E -USII0330 UWKE -DOF/220527 OPR/CAPITAL JET EET/USSV0001
+        RMK/TELXXXXXXXXXX)
+      </div>
+      <!-- <button id="send">Отправить флайт-план</button> -->
+    </form>
+  </body>
+</html>
