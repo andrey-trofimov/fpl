@@ -99,29 +99,33 @@ function showContacts() {
   let email = document.querySelector("#email");
   let finalFpl = document.querySelector("#final-fpl").innerHTML;
 
-  phone.innerHTML = convertStrToArry(atcUnit.phone, "tel:", "");
-  email.innerHTML = convertStrToArry(atcUnit.email, "mailto:", finalFpl);
+  let phoneArry = convertStrToArry(atcUnit.phone);
+  let emailArry = convertStrToArry(atcUnit.email);
+
+  phone.innerHTML = composeContact(phoneArry, "tel:", "");
+  email.innerHTML = composeContact(emailArry, "mailto:", finalFpl);
 }
 
-function convertStrToArry(str, prefix, body = "") {
+function convertStrToArry(str) {
   let separator = ",";
   let strArry = [];
   let arryIndex = 0;
-  let contact = "";
 
-  do {
-    if (str.includes(separator)) {
+  if (str.includes(separator)) {
+    while (str.includes(separator)) {
       strArry[arryIndex] = str.slice(0, str.indexOf(separator));
       str = str.slice(str.indexOf(separator) + 2);
       arryIndex++;
-    } else {
-      strArry[arryIndex] = str;
     }
-  } while (str.includes(separator));
+  }
   strArry[arryIndex] = str;
 
-  let msg = body != "" ? `&body=${body}` : "";
-  strArry.forEach((elem) => (contact += `<a href="${prefix}${elem}${msg}">${elem}</a><br>`));
+  return strArry;
+}
 
+function composeContact(arry, prefix, body = "") {
+  let contact = "";
+  let msg = body != "" ? `?body=${body}` : "";
+  arry.forEach((elem) => (contact += `<a href="${prefix}${elem}${msg}">${elem}</a>`));
   return contact;
 }

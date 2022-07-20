@@ -11,49 +11,42 @@
 
   <body>
     <form id="fpl">
-      <input type="date" placeholder="220517" id="dof" />
-      <input type="text" placeholder="RA01786" id="aircraft-id" />
+      <input type="date" placeholder="дата полета" id="dof" />
+      <input type="text" placeholder="регистрационнвй номер" id="aircraft-id" />
       <select id="flight-rules" name="flight-rules">
+        <option value="">правила полета</option>
         <option value="V">V</option>
         <option value="I">I</option>
         <option value="Y">Y</option>
         <option value="Z">Z</option>
       </select>
       <select id="type-of-flight" name="type-of-flight">
+        <option value="">тип полета</option>
         <option value="G">G</option>
         <option value="S">S</option>
         <option value="N">N</option>
         <option value="M">M</option>
         <option value="X">X</option>
       </select>
-      <input type="number" id="number" />
-      <input type="text" placeholder="SIRA" id="type-of-aircraft" />
-      <select id="wakw-turbulence-cat" name="wakw-turbulence-cat">
+      <input type="number" placeholder="количество бортов" id="number" />
+      <input type="text" placeholder="тип самолета" id="type-of-aircraft" />
+      <select id="wake-turbulence-cat" name="wake-turbulence-cat">
+        <option value="">категория турбулентного следа</option>
         <option value="L">L</option>
         <option value="H">H</option>
         <option value="M">M</option>
       </select>
-      <input type="text" placeholder="SG/C" id="equipment" />
-      <input type="text" placeholder="USII" id="departure-aerodrome" />
-      <input type="time" placeholder="1000" id="time" />
-      <input type="text" placeholder="N0095" id="cruising-speed" />
-      <input type="text" placeholder="A0030" id="level" />
-      <textarea
-        rows="5"
-        placeholder="5640N05305E 5627N05214E 5647N05155E 5707N05137E 5719N05208E 5742N05230E 5808N05241E 5759N05300E 5754N05343E 5732N05305E 5711N05309E 5703N05404E 5630N05348E"
-        id="route"
-      ></textarea>
-      <input type="text" placeholder="USII" id="destination-aerodrome" />
-      <input type="time" placeholder="0600" id="total-eet" />
-      <input type="text" placeholder="UWKE" id="altn-aerodrome" />
-      <input type="text" placeholder="" id="second-altn-aerodrome" />
-      <input
-        type="text"
-        placeholder="-DOF/220527 OPR/CAPITAL JET EET/USSV0001
-      RMK/TELXXXXXXXXXX"
-        id="other-information"
-      />
-      <input type="text" placeholder="" id="" />
+      <input type="text" placeholder="оборудование" id="equipment" />
+      <input type="text" placeholder="аэродром вылета" id="departure-aerodrome" />
+      <input type="time" placeholder="время вылета UTC" id="time" />
+      <input type="text" placeholder="крейсерская скорость" id="cruising-speed" />
+      <input type="text" placeholder="высота полета" id="level" />
+      <textarea rows="5" placeholder="маршрут" id="route"></textarea>
+      <input type="text" placeholder="аэродром назначения" id="destination-aerodrome" />
+      <input type="time" placeholder="продолжительность полета" id="total-eet" />
+      <input type="text" placeholder="запасной аэродром" id="altn-aerodrome" />
+      <input type="text" placeholder="2-ой запасной аэродром" id="second-altn-aerodrome" />
+      <textarea rows="5" placeholder="дополнительно" id="other-information"></textarea>
 
       <select id="atc-untits"></select>
       <div id="phone"></div>
@@ -65,7 +58,6 @@
         5711N05309E 5703N05404E 5630N05348E -USII0330 UWKE -DOF/220527 OPR/CAPITAL JET EET/USSV0001
         RMK/TELXXXXXXXXXX)
       </div>
-      <!-- <button id="send">Отправить флайт-план</button> -->
     </form>
   </body>
 </html>
