@@ -9,41 +9,250 @@ html {
 }
 
 body {
-  background: #000;
-  color: lightgray;
   padding: 10px;
-  line-height: 1.5rem;
+  background-image: linear-gradient(lightgrey, grey);
 }
 
-input,
-select,
-option,
-textarea {
-  font-size: 1rem;
-  background-color: rgb(70, 70, 70);
-  color: lightgreen;
-  padding: 3px;
+.main {
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: beige;
+  box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.3);
   border: none;
-  border-radius: 5px;
-  margin-bottom: 5px;
+  border-radius: 20px;
+}
+
+.title {
+  font-weight: 200;
+  letter-spacing: 1rem;
+  text-align: center;
+  line-height: 2.5rem;
+  color: darkkhaki;
+  margin-bottom: 1rem;
+  /* font-size: 1.5rem; */
+}
+
+.legend {
+  color: darkkhaki;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  text-align: right;
+}
+
+.fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  /* flex-direction: column; */
+  padding: 3px 0 0 0;
+  /* margin: 0 20px 0 0; */
+  border: none;
+  border-top: solid thin lightgrey;
+  flex: 1;
+}
+
+#field-8 {
+  flex-wrap: nowrap;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+}
+
+.block {
+  display: inline-block;
+  /* margin-right: 10px; */
+  flex: 1;
+}
+
+.block_textarea {
   width: 100%;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: lightskyblue;
+.block_number-of-aircrafts,
+.block_number-of-aircrafts,
+.block_destination-aerodrome,
+.block_total-eet,
+.block_altn-aerodrome,
+.block_second-altn-aerodrome {
+  flex: 1;
 }
 
-form {
-  border-radius: 10px;
-  background-color: gray;
-  padding: 10px;
+.block_destination-aerodrome,
+.block_total-eet,
+.block_altn-aerodrome,
+.block_second-altn-aerodrome {
+  min-width: 40%;
 }
 
-a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-  text-align: center;
+.block_total-eet {
+  margin-right: 0;
+}
+
+.block_aircraft-type {
+  flex: 2;
+}
+
+.block_equipment {
+  flex: 3;
+}
+
+.fieldset > .block:last-child {
+  margin-right: 0;
+}
+
+.input,
+.select,
+.option,
+.textarea,
+.button {
+  background-color: white;
+  padding: 20px 0 5px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
   display: block;
+  border-bottom: solid thick darkkhaki;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: solid thin darkkhaki;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding-top: 8px;
+  background-color: beige;
+  color: black;
+  line-height: 1rem;
+  background-image: linear-gradient(khaki, darkkhaki);
+  box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+  text-align: center;
+}
+
+.button:hover {
+  opacity: 1;
+}
+
+.button:active {
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.button.button_equipment {
+  flex: 1;
+}
+
+.a__button {
+  text-align: center;
+  text-decoration: none;
+}
+
+.a__button:active {
+  color: black;
+}
+
+.input,
+.select,
+.option {
+  text-align: center;
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  /* padding: 20px; */
+}
+
+.label {
+  color: gray;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  display: block;
+  margin-bottom: -17px;
+  padding-left: 5px;
+  z-index: 10;
+  /* text-align: center; */
+}
+
+/* .input:required::before {
+  content: ">";
+  color: coral;
+  font-weight: 800;
+} */
+
+input:invalid,
+.textarea:invalid {
+  border-bottom: solid thick orange;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: lightgray;
+  font-weight: 200;
+}
+
+/* .form {
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.2);
+} */
+
+#aircraft-id {
+  min-width: 8ex;
+}
+
+#flight-rules,
+#type-of-flight,
+#wake-turbulence-cat {
+  min-width: 5ex;
+}
+
+#number-of-aircrafts {
+  min-width: 3ex;
+}
+
+#aircraft-type {
+  min-width: 8ex;
+}
+
+#equipment {
+  min-width: 18ex;
+}
+
+#departure-aerodrome,
+#destination-aerodrome,
+#altn-aerodrome,
+#second-altn-aerodrome,
+#dep-zzzz,
+#dest-zzzz {
+  min-width: 6ex;
+}
+
+#departure-time,
+#total-eet,
+#cruising-speed,
+#flight-level {
+  min-width: 7ex;
+}
+
+#dof {
+  min-width: 10ex;
+}
+
+#opr,
+#pic {
+  min-width: 15ex;
+}
+
+#tel,
+#rmk {
+  min-width: 15ex;
 }
