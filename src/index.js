@@ -146,21 +146,21 @@ function buildFpl() {
 
   let field7 = `-${getData("#aircraft-id")}`;
 
-  let field8 = `-${getData("#flight-rules")}${getData("#type-of-flight")}<br />`;
+  let field8 = `-${getData("#flight-rules")}${getData("#type-of-flight")}"\r\n"`;
 
   let field9 = `-${getData("#aircraft-type")}/${getData("#wake-turbulence-cat")}`;
 
-  let field10 = `-${getData("#equipment")}<br />`;
+  let field10 = `-${getData("#equipment")}"\r\n"`;
 
-  let field13 = `-${getData("#departure-aerodrome")}${getDofAndTime("#departure-time", 0)}<br />`;
+  let field13 = `-${getData("#departure-aerodrome")}${getDofAndTime("#departure-time", 0)}"\r\n"`;
 
   let field15 = `-${getData("#cruising-speed")}${getData("#flight-level")} ${getData(
     "#route"
-  )}<br />`;
+  )}"\r\n"`;
 
   let field16 = `-${getData("#destination-aerodrome")}${getDofAndTime("#total-eet", 0)} ${getData(
     "#altn-aerodrome"
-  )} ${getData("#second-altn-aerodrome")}<br />`;
+  )} ${getData("#second-altn-aerodrome")}"\r\n"`;
 
   let field18 = ` -DOF/${getDofAndTime("#dof", 2)} OPR/${getData("#opr")} ${getData(
     "#other-information"
