@@ -17,7 +17,7 @@ const AtcCener = {
   rcKuf: {
     name: "РЦ ЕС ОрВД Самара",
     phone: "+7 (846) 279-18-26",
-    email: "zc_samara@mail.ru, smena.cpivp@cv.gkovd .ru",
+    email: "zc_samara@mail.ru, smena.cpivp@cv.gkovd.ru",
   },
   rcSvx: {
     name: "РЦ ЕС ОрВД Екатеринбург",
@@ -71,39 +71,44 @@ const AtcCener = {
   },
 };
 
-let select = "";
+let atcSelect = "";
 document.addEventListener("DOMContentLoaded", fpl());
 
 function fpl() {
   buildAtcList();
-  showContacts();
+  buildFpl();
   checkInput();
 }
 
 function buildAtcList() {
-  select = document.querySelector("#atc-untits");
+  atcSelect = document.querySelector("#atc-untits");
   for (let key in AtcCener) {
-    select.innerHTML += `<option value=${key}>${AtcCener[key].name}</opion>`;
+    atcSelect.innerHTML += `<option value=${key}>${AtcCener[key].name}</opion>`;
   }
+
+  showContacts();
 }
 
 function checkInput() {
-  select.addEventListener("change", showContacts);
+  let form = document.querySelector("#fpl");
+  let input = form.querySelectorAll("input");
+
+  atcSelect.addEventListener("change", showContacts);
+  input.forEach((elem) => elem.addEventListener("change", buildFpl));
 }
 
 function showContacts() {
-  let option = select.options[select.selectedIndex];
+  let option = atcSelect.options[atcSelect.selectedIndex];
   let atcUnit = AtcCener[option.value];
 
   let phone = document.querySelector("#phone");
   let email = document.querySelector("#email");
-  let finalFpl = document.querySelector("#final-fpl").innerHTML;
 
   let phoneArry = convertStrToArry(atcUnit.phone);
   let emailArry = convertStrToArry(atcUnit.email);
 
-  phone.innerHTML = composeContact(phoneArry, "tel:", "");
-  email.innerHTML = composeContact(emailArry, "mailto:", finalFpl);
+  phone.innerHTML = composeContact(phoneArry, "tel:");
+  email.innerHTML = composeContact(emailArry, "mailto:");
 }
 
 function convertStrToArry(str) {
@@ -119,13 +124,48 @@ function convertStrToArry(str) {
     }
   }
   strArry[arryIndex] = str;
-
   return strArry;
 }
 
-function composeContact(arry, prefix, body = "") {
+function composeContact(arry, prefix) {
   let contact = "";
-  let msg = body != "" ? `?body=${body}` : "";
-  arry.forEach((elem) => (contact += `<a href="${prefix}${elem}${msg}">${elem}</a>`));
+  arry.forEach((elem) => (contact += `<a href="${prefix}${elem}">${elem}</a>`));
   return contact;
+}
+
+function buildFpl() {
+  let finalFpl = document.querySelector("#final-fpl");
+
+  let field3 = "(FPL";
+
+  let field7 = `-${getData("#aircraft-id")}`;
+
+  let field8 = `-${getData("#flight-rules")}${getData("#type-of-flight")}\r\n`;
+
+  let field9 = `-${getData("#aircraft-type")}/${getData("#wake-turbulence-cat")}\r\n`;
+
+  let field10 = `-${getData("#equipment")}\r\n`;
+
+  let field13 = `-${getData("#departure-aerodrome")}${getData("#departure-time")}\r\n`;
+
+  let field15 = `-${getData("#cruising-speed")}${getData("#flight-level")} ${getData(
+    "#route"
+  )}\r\n`;
+
+  let field16 = `-${getData("#destination-aerodrome")}${getData("#total-eet")} ${getData(
+    "#altn-aerodrome"
+  )} ${getData("#second-altn-aerodrome")}\r\n`;
+
+  let field18 = ` -DOF/${getData("#dof")} OPR/${getData("#opr")} ${getData(
+    "#other-information"
+  )} RMK/TEL ${getData("#tel")}`;
+
+  let field19 = ")";
+
+  finalFpl.innerHTML =
+    field3 + field7 + field8 + field9 + field10 + field13 + field15 + field16 + field18 + field19;
+}
+
+function getData(idStr) {
+  return document.querySelector(idStr) ? document.querySelector(idStr).value : "";
 }
