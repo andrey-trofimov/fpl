@@ -146,21 +146,21 @@ function buildFpl() {
 
   let field7 = `-${getData("#aircraft-id")}`;
 
-  let field8 = `-${getData("#flight-rules")}${getData("#type-of-flight")}\r\n`;
+  let field8 = `-${getData("#flight-rules")}${getData("#type-of-flight")}<br />`;
 
-  let field9 = `-${getData("#aircraft-type")}/${getData("#wake-turbulence-cat")}\r\n`;
+  let field9 = `-${getData("#aircraft-type")}/${getData("#wake-turbulence-cat")}<br />`;
 
-  let field10 = `-${getData("#equipment")}\r\n`;
+  let field10 = `-${getData("#equipment")}<br />`;
 
-  let field13 = `-${getData("#departure-aerodrome")}${getDofAndTime("#departure-time", 0)}\r\n`;
+  let field13 = `-${getData("#departure-aerodrome")}${getDofAndTime("#departure-time", 0)}<br />`;
 
   let field15 = `-${getData("#cruising-speed")}${getData("#flight-level")} ${getData(
     "#route"
-  )}\r\n`;
+  )}<br />`;
 
   let field16 = `-${getData("#destination-aerodrome")}${getDofAndTime("#total-eet", 0)} ${getData(
     "#altn-aerodrome"
-  )} ${getData("#second-altn-aerodrome")}\r\n`;
+  )} ${getData("#second-altn-aerodrome")}<br />`;
 
   let field18 = ` -DOF/${getDofAndTime("#dof", 2)} OPR/${getData("#opr")} ${getData(
     "#other-information"
@@ -195,7 +195,7 @@ function createSendLink() {
   emailAdressMain = email[0].innerHTML;
   for (i = 1; i < email.length; i++) emailAdressCopy += `${email[i].innerHTML},`;
 
-  sendLink.href = `mailto:${emailAdressMain}?subject=${getData("#aircraft-id")} ${getData(
-    "#dof"
-  )}&cc="${emailAdressCopy}"&body="${msg}"`;
+  sendLink.href = `mailto:${emailAdressMain}?subject=${getData(
+    "#aircraft-id"
+  )} -DOF/${getDofAndTime("#dof", 2)}&cc=${emailAdressCopy}&body=${msg}`;
 }
