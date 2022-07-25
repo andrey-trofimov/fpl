@@ -55,40 +55,41 @@
             </div>
           </fieldset>
         </div>
+        <div class="container">
+          <fieldset class="fieldset" id="field-9">
+            <legend class="legend">Поле 9</legend>
 
-        <fieldset class="fieldset" id="field-9">
-          <legend class="legend">Поле 9</legend>
-
-          <div class="block block_number-of-aircrafts">
+            <!-- <div class="block block_number-of-aircrafts">
             <label class="label" for="number-of-aircrafts">Кол-во ВС</label>
             <input class="input" id="number-of-aircrafts" />
-          </div>
+          </div> -->
 
-          <div class="block block_aircraft-type">
-            <label class="label" for="aircraft-type">Тип ВС</label>
-            <input class="input" placeholder="SIRA" id="aircraft-type" value="SIRA" required />
-          </div>
+            <div class="block block_aircraft-type">
+              <label class="label" for="aircraft-type">Тип ВС</label>
+              <input class="input" placeholder="SIRA" id="aircraft-type" value="SIRA" required />
+            </div>
 
-          <div class="block block_wake-turbulence-cat">
-            <label class="label" for="wake-turbulence-cat">Турб. следа</label>
-            <select class="select" id="wake-turbulence-cat" name="wake-turbulence-cat" required>
-              <option value="L">L</option>
-              <option value="H">H</option>
-              <option value="M">M</option>
-            </select>
-          </div>
-        </fieldset>
+            <div class="block block_wake-turbulence-cat">
+              <label class="label" for="wake-turbulence-cat">Турб. следа</label>
+              <select class="select" id="wake-turbulence-cat" name="wake-turbulence-cat" required>
+                <option value="L">L</option>
+                <option value="H">H</option>
+                <option value="M">M</option>
+              </select>
+            </div>
+          </fieldset>
 
-        <fieldset class="fieldset" id="field-10">
-          <legend class="legend">Поле 10</legend>
+          <fieldset class="fieldset" id="field-10">
+            <legend class="legend">Поле 10</legend>
 
-          <div class="block block_equipment">
-            <label class="label" for="equipment">Оборудование</label>
-            <input class="input" placeholder="SG/C" id="equipment" value="SG/C" required />
-          </div>
+            <div class="block block_equipment">
+              <label class="label" for="equipment">Оборудование</label>
+              <input class="input" placeholder="SG/C" id="equipment" value="SG/C" required />
+            </div>
 
-          <a href="" class="button button_equipment">Выбрать из&nbsp;списка</a>
-        </fieldset>
+            <!-- <a href="" class="button button_equipment">Выбрать из&nbsp;списка</a> -->
+          </fieldset>
+        </div>
 
         <fieldset class="fieldset" id="field-13">
           <legend class="legend">Поле 13</legend>
@@ -115,12 +116,12 @@
 
           <div class="block">
             <label class="label" for="cruising-speed">Круизная скорость</label>
-            <input class="input" placeholder="K0090" id="cruising-speed" value="K0090" required />
-            <input type="radio" name="speed" id="speed-n" checked /><label for="speed-n"
+            <input class="input" placeholder="N0090" id="cruising-speed" value="N0090" required />
+            <!-- <input type="radio" name="speed" id="speed-n" checked /><label for="speed-n"
               >Узлы</label
             >
             <input type="radio" name="speed" id="speed-k" /><label for="speed-k">км/ч</label>
-            <input type="radio" name="speed" id="speed-m" /><label for="speed-m">Число М</label>
+            <input type="radio" name="speed" id="speed-m" /><label for="speed-m">Число М</label> -->
           </div>
 
           <div class="block">
@@ -164,10 +165,10 @@
             <input class="input" placeholder="UWKE" id="altn-aerodrome" value="UWKE" />
           </div>
 
-          <div class="block block_second-altn-aerodrome">
+          <!-- <div class="block block_second-altn-aerodrome">
             <label class="label" for="second-altn-aerodrome">2-ой запас. аэродром</label>
             <input class="input" id="second-altn-aerodrome" />
-          </div>
+          </div> -->
         </fieldset>
 
         <fieldset class="fieldset" id="field-18">
@@ -178,7 +179,7 @@
             <input class="input" id="typ" />
           </div> -->
 
-          <div class="block">
+          <div class="block block_dof">
             <label class="label" for="dof">Дата полета</label>
             <input class="input" type="date" id="dof" required />
           </div>
@@ -193,17 +194,17 @@
             <input class="input" id="dest-zzzz" />
           </div> -->
 
-          <div class="block">
+          <div class="block block_opr">
             <label class="label" for="opr">Эксплуатант</label>
             <input class="input" placeholder="Капитал Джет" id="opr" value="CAPITAL JET" required />
           </div>
 
-          <div class="block">
+          <div class="block block_pic">
             <label class="label" for="pic">КВС</label>
             <input class="input" placeholder="Трофимов" id="pic" value="TROFIMOV" required />
           </div>
 
-          <div class="block">
+          <div class="block block_tel">
             <label class="label" for="tel">Телефон</label>
             <input
               class="input"
@@ -214,42 +215,49 @@
             />
           </div>
 
-          <div class="block">
+          <!-- <div class="block">
             <label class="label" for="rmk">Примечание</label>
             <input class="input" placeholder="Примечание" id="rmk" />
-          </div>
+          </div> -->
 
           <div class="block block_textarea">
             <label class="label" for="other-information">Прочая информация</label>
-            <textarea class="textarea" rows="5" id="other-information" required>
+            <textarea class="textarea" rows="1" id="other-information" required>
 EET/USSV0001</textarea
             >
           </div>
         </fieldset>
 
-        <fieldset class="fieldset" id="field-19">
+        <!-- <fieldset class="fieldset" id="field-19">
           <legend class="legend">Поле 19</legend>
 
           <div class="block block_textarea">
-            <label class="label" for="additional-information">Прочее</label>
+            <label class="label" for="additional-information">Дополнительно</label>
             <textarea class="textarea" rows="5" placeholder="прочее" id="additional-information">
             </textarea>
           </div>
-        </fieldset>
+        </fieldset> -->
 
-        <input class="button" type="submit" />
+        <!-- <input class="button" type="submit" /> -->
+      </form>
 
-        <select class="select" id="atc-untits"></select>
+      <div class="result">
+        <div class="container">
+          <select class="select select_atc-unit" id="atc-untits"></select>
+          <a class="button button_send">Отправить</a>
+        </div>
         <div id="phone"></div>
         <div id="email"></div>
 
-        <div id="final-fpl">
+        <!-- <div id="final-fpl"></div> -->
+
+        <div id="example">
           (FPL-RA01786-VG -SIRA/L-SG/C -USII0900 -N0100A025 5640N05305E 5627N05214E 5647N05155E
           5707N05137E 5719N05208E 5742N05230E 5808N05241E 5759N05300E 5754N05343E 5732N05305E
           5711N05309E 5703N05404E 5630N05348E -USII0330 UWKE -DOF/220527 OPR/CAPITAL JET
           EET/USSV0001 RMK/TELXXXXXXXXXX)
         </div>
-      </form>
+      </div>
     </main>
   </body>
 </html>

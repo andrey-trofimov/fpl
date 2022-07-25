@@ -9,18 +9,17 @@ html {
 }
 
 body {
-  padding: 10px;
+  /* padding: 10px; */
   background-image: linear-gradient(lightgrey, grey);
 }
 
 .main {
   max-width: 1200px;
-  margin: 10px auto;
-  padding: 20px;
+  margin: 0px auto;
   background-color: beige;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 20px;
+  /* border: none;
+  border-radius: 20px; */
 }
 
 .title {
@@ -70,6 +69,7 @@ body {
 
 .block_textarea {
   width: 100%;
+  min-width: 60%;
 }
 
 .block_number-of-aircrafts,
@@ -77,14 +77,22 @@ body {
 .block_destination-aerodrome,
 .block_total-eet,
 .block_altn-aerodrome,
-.block_second-altn-aerodrome {
+.block_second-altn-aerodrome,
+.block_dof,
+.block_opr,
+.block_pic,
+.block_tel {
   flex: 1;
 }
 
 .block_destination-aerodrome,
 .block_total-eet,
 .block_altn-aerodrome,
-.block_second-altn-aerodrome {
+.block_second-altn-aerodrome,
+.block_dof,
+.block_opr,
+.block_pic,
+.block_tel {
   min-width: 40%;
 }
 
@@ -106,14 +114,14 @@ body {
 
 .input,
 .select,
-.option,
+select .option,
 .textarea,
 .button {
   background-color: white;
   padding: 20px 0 5px;
   border: none;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   font-size: 1.2rem;
   display: block;
   border-bottom: solid thick darkkhaki;
@@ -160,14 +168,31 @@ body {
 
 .input,
 .select,
-.option {
+.select .option,
+.input[type*="time"],
+.input[type*="date"] {
   text-align: center;
   width: 100%;
+}
+
+.input[type*="time"],
+.input[type*="date"] {
+  height: 25px;
+}
+
+.select .option {
+  height: 50px;
+}
+
+.select_atc-unit {
+  flex: 3;
+  background-color: khaki;
 }
 
 .textarea {
   width: 100%;
   /* padding: 20px; */
+  text-align: center;
 }
 
 .label {
@@ -198,12 +223,9 @@ input:invalid,
   font-weight: 200;
 }
 
-/* .form {
-  border-radius: 10px;
-  background-color: white;
-  padding: 10px;
-  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.2);
-} */
+.form {
+  padding: 20px;
+}
 
 #aircraft-id {
   min-width: 8ex;
@@ -219,13 +241,13 @@ input:invalid,
   min-width: 3ex;
 }
 
-#aircraft-type {
+/* #aircraft-type {
   min-width: 8ex;
-}
+} */
 
-#equipment {
+/* #equipment {
   min-width: 18ex;
-}
+} */
 
 #departure-aerodrome,
 #destination-aerodrome,
@@ -243,7 +265,7 @@ input:invalid,
   min-width: 7ex;
 }
 
-#dof {
+/* #dof {
   min-width: 10ex;
 }
 
@@ -255,4 +277,55 @@ input:invalid,
 #tel,
 #rmk {
   min-width: 15ex;
+} */
+
+#field-9 {
+  flex: 2;
+}
+#field-10 {
+  flex: 1;
+}
+
+/* #field-18 {
+  margin-bottom: 10px;
+} */
+
+.result {
+  padding: 20px;
+  background-color: wheat;
+  /* box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.2); */
+  background-image: linear-gradient(grey, darkgrey, lightgray);
+}
+
+.button_send {
+  /* background-image: linear-gradient(lightcoral, orange); */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#phone,
+#email {
+  text-align: center;
+}
+#phone a,
+#email a {
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: khaki;
+  text-align: center;
+}
+
+#final-fpl,
+#example {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  background-color: gray;
+  margin-top: 20px;
+  color: whitesmoke;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.8rem;
 }
