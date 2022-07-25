@@ -92,9 +92,13 @@ function buildAtcList() {
 function checkInput() {
   let form = document.querySelector("#fpl");
   let input = form.querySelectorAll("input");
+  let select = form.querySelectorAll("select");
+  let textArea = form.querySelectorAll("textarea");
 
   atcSelect.addEventListener("change", showContacts);
   input.forEach((elem) => elem.addEventListener("change", buildFpl));
+  select.forEach((elem) => elem.addEventListener("change", buildFpl));
+  textArea.forEach((elem) => elem.addEventListener("change", buildFpl));
 }
 
 function showContacts() {
@@ -109,6 +113,8 @@ function showContacts() {
 
   phone.innerHTML = composeContact(phoneArry, "tel:");
   email.innerHTML = composeContact(emailArry, "mailto:");
+
+  createSendLink();
 }
 
 function convertStrToArry(str) {
@@ -146,17 +152,17 @@ function buildFpl() {
 
   let field10 = `-${getData("#equipment")}\r\n`;
 
-  let field13 = `-${getData("#departure-aerodrome")}${getData("#departure-time")}\r\n`;
+  let field13 = `-${getData("#departure-aerodrome")}${getDofAndTime("#departure-time", 0)}\r\n`;
 
   let field15 = `-${getData("#cruising-speed")}${getData("#flight-level")} ${getData(
     "#route"
   )}\r\n`;
 
-  let field16 = `-${getData("#destination-aerodrome")}${getData("#total-eet")} ${getData(
+  let field16 = `-${getData("#destination-aerodrome")}${getDofAndTime("#total-eet", 0)} ${getData(
     "#altn-aerodrome"
   )} ${getData("#second-altn-aerodrome")}\r\n`;
 
-  let field18 = ` -DOF/${getData("#dof")} OPR/${getData("#opr")} ${getData(
+  let field18 = ` -DOF/${getDofAndTime("#dof", 2)} OPR/${getData("#opr")} ${getData(
     "#other-information"
   )} RMK/TEL ${getData("#tel")}`;
 
@@ -164,8 +170,32 @@ function buildFpl() {
 
   finalFpl.innerHTML =
     field3 + field7 + field8 + field9 + field10 + field13 + field15 + field16 + field18 + field19;
+
+  createSendLink();
 }
 
 function getData(idStr) {
   return document.querySelector(idStr) ? document.querySelector(idStr).value : "";
+}
+
+function getDofAndTime(str, position) {
+  let data = document.querySelector(str).value;
+  data = data.slice(position);
+  data = data.replace(/\D/g, "");
+  return data;
+}
+
+function createSendLink() {
+  let email = document.querySelectorAll("#email a");
+  let msg = document.querySelector("#final-fpl").innerHTML;
+  let sendLink = document.querySelector("#send-button");
+  let emailAdressMain = "";
+  let emailAdressCopy = "";
+
+  emailAdressMain = email[0].innerHTML;
+  for (i = 1; i < email.length; i++) emailAdressCopy += `${email[i].innerHTML},`;
+
+  sendLink.href = `mailto:${emailAdressMain}?subject=${getData("#aircraft-id")} ${getData(
+    "#dof"
+  )}&cc="${emailAdressCopy}"&body="${msg}"`;
 }
