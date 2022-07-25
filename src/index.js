@@ -72,6 +72,7 @@ const AtcCener = {
 };
 
 let atcSelect = "";
+let fplMsg = "";
 document.addEventListener("DOMContentLoaded", fpl());
 
 function fpl() {
@@ -162,14 +163,16 @@ function buildFpl() {
     "#altn-aerodrome"
   )} ${getData("#second-altn-aerodrome")}\r\n`;
 
-  let field18 = ` -DOF/${getDofAndTime("#dof", 2)} OPR/${getData("#opr")} ${getData(
+  let field18 = `-DOF/${getDofAndTime("#dof", 2)} OPR/${getData("#opr")} ${getData(
     "#other-information"
   )} RMK/TEL ${getData("#tel")}`;
 
   let field19 = ")";
 
-  finalFpl.innerHTML =
+  fplMsg =
     field3 + field7 + field8 + field9 + field10 + field13 + field15 + field16 + field18 + field19;
+
+  finalFpl.innerHTML = fplMsg;
 
   createSendLink();
 }
@@ -187,7 +190,6 @@ function getDofAndTime(str, position) {
 
 function createSendLink() {
   let email = document.querySelectorAll("#email a");
-  let msg = document.querySelector("#final-fpl").innerHTML;
   let sendLink = document.querySelector("#send-button");
   let emailAdressMain = "";
   let emailAdressCopy = "";
@@ -197,5 +199,7 @@ function createSendLink() {
 
   sendLink.href = `mailto:${emailAdressMain}?subject=${getData(
     "#aircraft-id"
-  )} -DOF/${getDofAndTime("#dof", 2)}&cc=${emailAdressCopy}&body=${msg}`;
+  )} -DOF/${getDofAndTime("#dof", 2)}&cc=${emailAdressCopy}&body=${fplMsg}`;
+
+  console.log(fplMsg);
 }
