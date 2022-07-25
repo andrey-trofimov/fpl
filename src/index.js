@@ -148,7 +148,7 @@ function buildFpl() {
 
   let field8 = `-${getData("#flight-rules")}${getData("#type-of-flight")}<br />`;
 
-  let field9 = `-${getData("#aircraft-type")}/${getData("#wake-turbulence-cat")}<br />`;
+  let field9 = `-${getData("#aircraft-type")}/${getData("#wake-turbulence-cat")}`;
 
   let field10 = `-${getData("#equipment")}<br />`;
 
