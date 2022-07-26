@@ -95,11 +95,13 @@ function checkInput() {
   let input = form.querySelectorAll("input");
   let select = form.querySelectorAll("select");
   let textArea = form.querySelectorAll("textarea");
+  let sendButton = document.querySelector("#send-button");
 
   atcSelect.addEventListener("change", showContacts);
   input.forEach((elem) => elem.addEventListener("change", buildFpl));
   select.forEach((elem) => elem.addEventListener("change", buildFpl));
   textArea.forEach((elem) => elem.addEventListener("change", buildFpl));
+  sendButton.addEventListener("click", sendFpl);
 }
 
 function showContacts() {
@@ -114,8 +116,6 @@ function showContacts() {
 
   phone.innerHTML = composeContact(phoneArry, "tel:");
   email.innerHTML = composeContact(emailArry, "mailto:");
-
-  createSendLink();
 }
 
 function convertStrToArry(str) {
@@ -172,9 +172,7 @@ function buildFpl() {
   fplMsg =
     field3 + field7 + field8 + field9 + field10 + field13 + field15 + field16 + field18 + field19;
 
-  finalFpl.innerHTML = fplMsg;
-
-  createSendLink();
+  finalFpl.innerHTML = fplMsg.replace(/%0d%0a/g, "<br>");
 }
 
 function getData(idStr) {
@@ -188,18 +186,22 @@ function getDofAndTime(str, position) {
   return data;
 }
 
-function createSendLink() {
+function sendFpl() {
   let email = document.querySelectorAll("#email a");
-  let sendLink = document.querySelector("#send-button");
+  // let sendLink = document.querySelector("#send-button");
   let emailAdressMain = "";
   let emailAdressCopy = "";
+  let mailto = "";
 
   emailAdressMain = email[0].innerHTML;
   for (i = 1; i < email.length; i++) emailAdressCopy += `${email[i].innerHTML},`;
 
-  sendLink.href = `mailto:${emailAdressMain}?subject=${getData(
-    "#aircraft-id"
-  )} -DOF/${getDofAndTime("#dof", 2)}&cc=${emailAdressCopy}&body=${fplMsg}`;
+  mailto = `mailto:${emailAdressMain}?subject=${getData("#aircraft-id")} -DOF/${getDofAndTime(
+    "#dof",
+    2
+  )}&cc=${emailAdressCopy}&body=${fplMsg}`;
 
-  console.log(fplMsg);
+  document.location = mailto;
+
+  console.log(fplMsg.replace(/%0d%0a/g, "\r\n"));
 }
