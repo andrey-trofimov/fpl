@@ -13,7 +13,7 @@
     <main class="main">
       <h1 class="title">План полёта</h1>
 
-      <form id="fpl" class="form">
+      <form id="fpl" class="form" name="fpl">
         <div class="container">
           <fieldset class="fieldset" id="field-7">
             <legend class="legend">Поле 7</legend>
@@ -231,14 +231,15 @@ EET/USSV0001</textarea
             </textarea>
           </div>
         </fieldset> -->
-
-        <!-- <input class="button" type="submit" /> -->
       </form>
 
       <div class="result">
         <div class="container">
           <select class="select select_atc-unit" id="atc-untits"></select>
           <a class="button button_send" id="send-button">Отправить</a>
+          <!-- <button class="button button_send" type="submit" form="fpl" id="send-button"> -->
+            Отправить
+          </button>
         </div>
         <div id="phone"></div>
         <div id="email"></div>
