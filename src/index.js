@@ -1,4 +1,9 @@
 const AtcCener = {
+  rcTest: {
+    name: "Тест",
+    phone: "+7 926 367-53-26",
+    email: "trofian@yandex.ru",
+  },
   rcMow: {
     name: "РЦ ЕС ОрВД Москва",
     phone: "+7 (495) 436-75-57, +7 (495) 662-80-55, +7 (916) 043-36-37",
@@ -187,21 +192,46 @@ function getDofAndTime(str, position) {
 }
 
 function sendFpl() {
-  let email = document.querySelectorAll("#email a");
-  // let sendLink = document.querySelector("#send-button");
-  let emailAdressMain = "";
-  let emailAdressCopy = "";
-  let mailto = "";
+  if (validateFpl()) {
+    let email = document.querySelectorAll("#email a");
+    let emailAdressMain = "";
+    let emailAdressCopy = "";
+    let mailto = "";
 
-  emailAdressMain = email[0].innerHTML;
-  for (i = 1; i < email.length; i++) emailAdressCopy += `${email[i].innerHTML},`;
+    emailAdressMain = email[0].innerHTML;
+    for (i = 1; i < email.length; i++) emailAdressCopy += `${email[i].innerHTML},`;
 
-  mailto = `mailto:${emailAdressMain}?subject=${getData("#aircraft-id")} -DOF/${getDofAndTime(
-    "#dof",
-    2
-  )}&cc=${emailAdressCopy}&body=${fplMsg}`;
+    mailto = `mailto:${emailAdressMain}?subject=${getData("#aircraft-id")} -DOF/${getDofAndTime(
+      "#dof",
+      2
+    )}&cc=${emailAdressCopy}&body=${fplMsg}`;
 
-  document.location = mailto;
+    document.location = mailto;
 
-  console.log(fplMsg.replace(/%0d%0a/g, "\r\n"));
+    console.log(fplMsg.replace(/%0d%0a/g, "\r\n"));
+  }
+}
+
+function validateFpl() {
+  let result = true;
+  let inputArr = document.querySelectorAll("#fpl input");
+  let textareaArr = document.querySelectorAll("#fpl textarea");
+
+  inputArr.forEach((input) => {
+    // console.log(input.required);
+    if (input.required && input.value == "") {
+      console.log("Заполните: ", input.id);
+      result &= false;
+    }
+  });
+
+  textareaArr.forEach((textarea) => {
+    // console.log(textarea.required);
+    if (textarea.required && textarea.innerHTML == "") {
+      console.log("Заполните: ", textarea.id);
+      result &= false;
+    }
+  });
+
+  return result;
 }
