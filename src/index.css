@@ -3,6 +3,17 @@
   margin: 0;
 }
 
+button,
+select,
+input[type=button],
+input[type=select],
+input[type=time],
+input[type=date]   {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 html {
   font-size: 16px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
