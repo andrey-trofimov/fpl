@@ -1,4 +1,4 @@
-import { AtcCener } from "./atc.js";
+import { atcCener } from "./atc.js";
 
 let atcSelect = "";
 let fplMsg = "";
@@ -12,8 +12,8 @@ function fpl() {
 
 function buildAtcList() {
   atcSelect = document.querySelector("#atc-untits");
-  for (let key in AtcCener) {
-    atcSelect.innerHTML += `<option value=${key}>${AtcCener[key].name}</opion>`;
+  for (let key in atcCener) {
+    atcSelect.innerHTML += `<option value=${key}>${atcCener[key].name}</opion>`;
   }
 
   showContacts();
@@ -35,7 +35,7 @@ function checkInput() {
 
 function showContacts() {
   let option = atcSelect.options[atcSelect.selectedIndex];
-  let atcUnit = AtcCener[option.value];
+  let atcUnit = atcCener[option.value];
 
   let phone = document.querySelector("#phone");
   let email = document.querySelector("#email");
@@ -76,36 +76,55 @@ function buildFpl() {
 
   let field7 = `-${getData("#aircraft-id")}`;
 
-  let field8 = `-${getData("#flight-rules")}${getData("#type-of-flight")}%0d%0a `;
+  let field8 = `-${getData("#flight-rules")}${getData(
+    "#type-of-flight"
+  )}%0d%0a `;
 
-  let field9 = `-${getData("#aircraft-type")}/${getData("#wake-turbulence-cat")}`;
+  let field9 = `-${getData("#aircraft-type")}/${getData(
+    "#wake-turbulence-cat"
+  )}`;
 
   let field10 = `-${getData("#equipment")}%0d%0a `;
 
-  let field13 = `-${getData("#departure-aerodrome")}${getDofAndTime("#departure-time", 0)}%0d%0a `;
-
-  let field15 = `-${getData("#cruising-speed")}${getData("#flight-level")} ${getData(
-    "#route"
+  let field13 = `-${getData("#departure-aerodrome")}${getDofAndTime(
+    "#departure-time",
+    0
   )}%0d%0a `;
 
-  let field16 = `-${getData("#destination-aerodrome")}${getDofAndTime("#total-eet", 0)} ${getData(
-    "#altn-aerodrome"
-  )} ${getData("#second-altn-aerodrome")}%0d%0a `;
+  let field15 = `-${getData("#cruising-speed")}${getData(
+    "#flight-level"
+  )} ${getData("#route")}%0d%0a `;
 
-  let field18 = `-DOF/${getDofAndTime("#dof", 2)} OPR/${getData("#opr")} ${getData(
-    "#other-information"
-  )} RMK/TEL ${getData("#tel")}`;
+  let field16 = `-${getData("#destination-aerodrome")}${getDofAndTime(
+    "#total-eet",
+    0
+  )} ${getData("#altn-aerodrome")} ${getData("#second-altn-aerodrome")}%0d%0a `;
+
+  let field18 = `-DOF/${getDofAndTime("#dof", 2)} OPR/${getData(
+    "#opr"
+  )} ${getData("#other-information")} RMK/TEL ${getData("#tel")}`;
 
   let field19 = ")";
 
   fplMsg =
-    field3 + field7 + field8 + field9 + field10 + field13 + field15 + field16 + field18 + field19;
+    field3 +
+    field7 +
+    field8 +
+    field9 +
+    field10 +
+    field13 +
+    field15 +
+    field16 +
+    field18 +
+    field19;
 
   finalFpl.innerHTML = fplMsg.replace(/%0d%0a/g, "<br>");
 }
 
 function getData(idStr) {
-  return document.querySelector(idStr) ? document.querySelector(idStr).value : "";
+  return document.querySelector(idStr)
+    ? document.querySelector(idStr).value
+    : "";
 }
 
 function getDofAndTime(str, position) {
@@ -123,12 +142,12 @@ function sendFpl() {
     let mailto = "";
 
     emailAdressMain = email[0].innerHTML;
-    for (let i = 1; i < email.length; i++) emailAdressCopy += `${email[i].innerHTML},`;
+    for (let i = 1; i < email.length; i++)
+      emailAdressCopy += `${email[i].innerHTML},`;
 
-    mailto = `mailto:${emailAdressMain}?subject=${getData("#aircraft-id")} -DOF/${getDofAndTime(
-      "#dof",
-      2
-    )}&cc=${emailAdressCopy}&body=${fplMsg}`;
+    mailto = `mailto:${emailAdressMain}?subject=${getData(
+      "#aircraft-id"
+    )} -DOF/${getDofAndTime("#dof", 2)}&cc=${emailAdressCopy}&body=${fplMsg}`;
 
     document.location = mailto;
 

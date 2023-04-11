@@ -1,4 +1,4 @@
-export const AtcCener = {
+export const atcCener = {
   rcTest: {
     name: "Тест",
     phone: "+7 926 367-53-26",
